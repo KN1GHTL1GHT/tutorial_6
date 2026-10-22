@@ -45,6 +45,13 @@ document.querySelector('#load-then').addEventListener('click', () => {
   //   .then((data) => {
   //     ...save data into restaurants, log how many arrived, and call setCountButton(true)
   //   });
+  fetch('./restaurants.json')
+    .then((response) => response.json())
+    .then((data) => {
+      restaurants = data;
+      log('#log-then', `The callback got ${restaurants.length} restaurants`);
+      setCountButton(true);
+    });
 
   log('#log-then', 'This line comes after fetch() in the code');
 });
