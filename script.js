@@ -12,7 +12,7 @@ let restaurants = [];
 // TODO 1: A CALLBACK THAT RUNS LATER
 // When the button is clicked, use setTimeout to write "Ready!" into #ready-output
 // after 2 seconds. Predict first: which reaches the log first, "Waiting..." or "Ready!"?
-// My prediction:
+// My prediction: "Waiting..." reaches the log first, then "Ready!" about 2 seconds later.
 // ============================================
 
 document.querySelector('#run-todo-1').addEventListener('click', () => {
@@ -20,6 +20,10 @@ document.querySelector('#run-todo-1').addEventListener('click', () => {
 
   // YOUR CODE HERE
   // Hint: setTimeout(() => { ...write 'Ready!' to the page, and log('#log-todo-1', 'Ready!') }, 2000);
+  setTimeout(() => {
+    document.querySelector('#ready-output').textContent = 'Ready!';
+    log('#log-todo-1', 'Ready!');
+  }, 2000);
 
   log('#log-todo-1', 'Waiting...');
 });
