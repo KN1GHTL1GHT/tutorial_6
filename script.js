@@ -73,6 +73,20 @@ document.querySelector('#load-await').addEventListener('click', async () => {
   // } catch (error) {
   //   ...console.error the error, then showStatus('error', ...) with a friendly message
   // }
+  showStatus('loading', 'Loading restaurants...');
+  try {
+    const response = await fetch('./restaurants.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    restaurants = data;
+    showStatus('success', `Loaded ${restaurants.length} restaurants`);
+    setCountButton(true);
+  } catch (error) {
+    console.error(error);
+    showStatus('error', "Sorry, we couldn't load the restaurants. Please try again later.");
+  }
 });
 
 // ============================================
